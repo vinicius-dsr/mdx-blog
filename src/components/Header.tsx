@@ -4,6 +4,7 @@ import { siteConfig } from "../../config/site";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "./ui/button";
 import MainNav from "./MainNav";
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
@@ -43,6 +44,7 @@ export default function Header() {
               <span className="sr-only">Instagram</span>
             </div>
           </Link>
+          <MobileNav />
         </div>
       </div>
     </header>

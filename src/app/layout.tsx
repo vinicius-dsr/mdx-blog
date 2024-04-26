@@ -18,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.variable
+        )}
+      >
         <div className="relative flex min-h-dvh flex-col bg-background">
           <Header />
           <main className="flex-1">{children}</main>
