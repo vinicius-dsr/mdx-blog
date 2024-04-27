@@ -4,14 +4,16 @@ import { Card } from "@/components/ui/card";
 import { sortPosts } from "@/lib/utils";
 
 export default async function BlogPage() {
-  const sortedPosts = sortPosts(posts.filter((post) => post.published))
+  const sortedPosts = sortPosts(posts.filter((post) => post.published));
   const displayPosts = posts;
 
   return (
     <div className="container max-w-screen-lg py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-black text-4xl lg:text-5xl">Bem vindo ao meu blog 🤠</h1>
+          <h1 className="inline-block font-black text-4xl lg:text-5xl">
+            Bem vindo ao meu blog 🤠
+          </h1>
           <p className="text-xl text-muted-foreground">
             Projetos e estudos de desenvolvimento web.
           </p>

@@ -19,8 +19,6 @@ export default function Header() {
           <MainNav />
         </div>
 
-        
-
         <div className="flex flex-1 items-center gap-1 justify-end">
           <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
             <div
