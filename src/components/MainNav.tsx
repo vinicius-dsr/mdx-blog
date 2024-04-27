@@ -22,7 +22,7 @@ export default function MainNav() {
         href="#latest"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary hidden sm:inline-block",
-          pathname === "#latest" ? "text-foreground" : "text-foreground/60"
+          pathname === "/#latest" ? "text-foreground" : "text-foreground/60"
         )}
       >
         Recentes

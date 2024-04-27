@@ -2,6 +2,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
+import { Card } from "./ui/card";
 
 interface PostItemProps {
   slug: string;
@@ -17,7 +18,8 @@ export default function PostItem({
   date,
 }: PostItemProps) {
   return (
-    <article className="flex flex-col gap-2 border-border border-b py-3">
+    <article className="flex flex-col gap-2 py-2">
+      <Card className="p-5">
       <div>
         <h2 className="text-2xl font-bold">
           <Link href={"/" + slug}>{title}</Link>
@@ -39,6 +41,7 @@ export default function PostItem({
           Ler artigo
         </Link>
       </div>
+      </Card>
     </article>
   );
 }
