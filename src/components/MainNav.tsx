@@ -18,7 +18,7 @@ export default function MainNav() {
       >
         Blog
       </Link>
-      <Link
+      {/* <Link
         href="#latest"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary hidden sm:inline-block",
@@ -26,7 +26,7 @@ export default function MainNav() {
         )}
       >
         Recentes
-      </Link>
+      </Link> */}
       <Link
         href="/about"
         className={cn(
