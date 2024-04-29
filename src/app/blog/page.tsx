@@ -23,38 +23,38 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   );
 
   return (
-    <div className="container max-w-screen-lg py-6 lg:py-10">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-black text-4xl lg:text-5xl">
-            Bem vindo ao meu blog 🤠
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Projetos e estudos de desenvolvimento web.
-          </p>
-        </div>
+    <section className="flex flex-col mx-auto container">
+      <div className="container py-20 max-w-screen-lg h-[30vh] flex flex-col justify-center items-center gap-3 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600">
+        <h1 className="font-black text-4xl lg:text-5xl drop-shadow-md text-white dark:text-primary">
+          Bem vindo ao meu blog 📓
+        </h1>
+        <p className="text-xl text-white/70 font-medium drop-shadow-md">
+          Projetos e estudos de desenvolvimento web.
+        </p>
       </div>
-      <hr className="mt-8 mb-5" />
-      {displayPosts?.length > 0 ? (
-        <ul className="flex flex-col">
-          {displayPosts.map((post) => {
-            const { slug, date, title, description } = post;
-            return (
-              <li key={slug}>
-                <PostItem
-                  slug={slug}
-                  date={date}
-                  title={title}
-                  description={description}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <p>Nada para ver aqui ... </p>
-      )}
-      <QueryPagination totalPages={totalPages} />
-    </div>
+
+      <div className="container px-0 max-w-screen-lg lg:py-10 md:-mt-2 mt-5">
+        {displayPosts?.length > 0 ? (
+          <ul className="grid md:grid-cols-2 grid-cols-1 md:gap-5 gap-2 mb-5">
+            {displayPosts.map((post) => {
+              const { slug, date, title, description } = post;
+              return (
+                <li key={slug}>
+                  <PostItem
+                    slug={slug}
+                    date={date}
+                    title={title}
+                    description={description}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>Nada para ver aqui ... </p>
+        )}
+        <QueryPagination totalPages={totalPages} />
+      </div>
+    </section>
   );
 }
