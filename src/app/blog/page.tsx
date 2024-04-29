@@ -1,11 +1,26 @@
 import { posts } from "#site/content";
 import PostItem from "@/components/PostItem";
+import QueryPagination from "@/components/QueryPagination";
 import { Card } from "@/components/ui/card";
 import { sortPosts } from "@/lib/utils";
 
-export default async function BlogPage() {
+const POSTS_PER_PAGE = 5;
+
+interface BlogPageProps {
+  searchParams: {
+    page?: string;
+  };
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const currentPage = Number(searchParams?.page) || 1;
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
-  const displayPosts = posts;
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+
+  const displayPosts = sortedPosts.slice(
+    POSTS_PER_PAGE * (currentPage - 1),
+    POSTS_PER_PAGE * currentPage
+  );
 
   return (
     <div className="container max-w-screen-lg py-6 lg:py-10">
@@ -39,6 +54,7 @@ export default async function BlogPage() {
       ) : (
         <p>Nada para ver aqui ... </p>
       )}
+      <QueryPagination totalPages={totalPages} />
     </div>
   );
 }
