@@ -4,10 +4,11 @@ export const siteConfig = {
   description: "Markdown blog using Nextjs 14, Velite, Tailwind CSS and Shadcn",
   author: "Vinícius Reis",
   links: {
-    instagram: "",
-    github: "",
+    instagram: "https://www.instagram.com/vinicius_dev",
+    github: "https://github.com/vinicius-dsr",
     linkedin: "",
     personalSite: "https://vinicius-dsr.github.io/portfolio",
+    project: "https://github.com/vinicius-dsr/mdx-blog",
   },
 };
 

@@ -1,8 +1,10 @@
 import { posts } from "#site/content";
 import PostItem from "@/components/PostItem";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn, sortPosts } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "../../config/site";
 
 export default function Home() {
   const latestPosts = sortPosts(posts).slice(0, 6);
@@ -26,7 +28,7 @@ export default function Home() {
             Acessar blog
           </Link>
           <Link
-            href=""
+            href={siteConfig.links.project}
             className={cn(
               buttonVariants({ size: "lg", variant: "outline" }),
               "rounded-xl font-medium"
@@ -53,6 +55,11 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <Link href="/blog">
+          <Button variant="ghost" className="flex gap-2 items-center">
+            Ver mais postagens <ArrowRight size={17} />
+          </Button>
+        </Link>
       </div>
     </section>
   );
