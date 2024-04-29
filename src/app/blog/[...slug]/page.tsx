@@ -32,8 +32,8 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <article>
-      <div className="container max-w-screen-lg mx-auto rounded-xl flex flex-col gap-2 py-8 items-center text-center bg-gradient-to-r from-slate-900 to-slate-600 ">
+    <article className="container mx-auto">
+      <div className="max-w-screen-lg mx-auto rounded-xl flex flex-col gap-2 py-8 items-center text-center bg-gradient-to-r from-slate-900 to-slate-600 ">
         <h1 className="font-bold drop-shadow-md text-3xl text-white dark:text-primary">
           {post.title}
         </h1>
