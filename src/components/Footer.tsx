@@ -9,7 +9,13 @@ export default function Footer() {
     <footer className="flex flex-col gap-4 w-full items-center py-10 border-t mt-5">
       <span>
         Desenvolvido com 💙 por{" "}
-        <Link href={siteConfig.links.personalSite}>Vinícius Reis</Link>
+        <Link
+          href={siteConfig.links.personalSite}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Vinícius Reis
+        </Link>
       </span>
       <div className="flex gap-2">
         <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
