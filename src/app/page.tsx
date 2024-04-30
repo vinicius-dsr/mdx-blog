@@ -29,6 +29,7 @@ export default function Home() {
           </Link>
           <Link
             href={siteConfig.links.project}
+            target="_blank"
             className={cn(
               buttonVariants({ size: "lg", variant: "outline" }),
               "rounded-xl font-medium"

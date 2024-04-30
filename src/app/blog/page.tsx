@@ -4,7 +4,7 @@ import QueryPagination from "@/components/QueryPagination";
 import { Card } from "@/components/ui/card";
 import { sortPosts } from "@/lib/utils";
 
-const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 6;
 
 interface BlogPageProps {
   searchParams: {

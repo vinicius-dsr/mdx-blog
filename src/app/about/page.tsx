@@ -77,7 +77,6 @@ export default function AboutPage() {
           <Link
             href={siteConfig.links.personalSite}
             target="_blank"
-            rel="noreferrer"
             className={cn(
               buttonVariants({ size: "lg" }),
               "w-full mt-2 font-semibold flex gap-2"
@@ -105,6 +104,8 @@ export default function AboutPage() {
             </Link>
             <Link
               href={siteConfig.links.project}
+              target="_blank"
+              rel="noreferrer"
               className={cn(buttonVariants({ size: "lg", variant: "outline" }))}
             >
               Github do projeto
