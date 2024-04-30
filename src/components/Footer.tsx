@@ -6,13 +6,13 @@ import { siteConfig } from "../../config/site";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-2 w-full items-center py-10 border-t mt-5">
+    <footer className="flex flex-col gap-4 w-full items-center py-10 border-t mt-5">
       <span>
         Desenvolvido com 💙 por{" "}
         <Link href={siteConfig.links.personalSite}>Vinícius Reis</Link>
       </span>
       <div className="flex gap-2">
-        <Link href={siteConfig.links.github}>
+        <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
           <div
             className={cn(
               buttonVariants({ variant: "outline" }),
@@ -23,7 +23,11 @@ export default function Footer() {
             <span className="sr-only">GitHub</span>
           </div>
         </Link>
-        <Link href={siteConfig.links.instagram}>
+        <Link
+          href={siteConfig.links.instagram}
+          target="_blank"
+          rel="noreferrer"
+        >
           <div
             className={cn(
               buttonVariants({ variant: "outline" }),
@@ -34,7 +38,7 @@ export default function Footer() {
             <span className="sr-only">Instagram</span>
           </div>
         </Link>
-        <Link href={siteConfig.links.linkedin}>
+        <Link href={siteConfig.links.linkedin} target="_blank" rel="noreferrer">
           <div
             className={cn(
               buttonVariants({ variant: "outline" }),

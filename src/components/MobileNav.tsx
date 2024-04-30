@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { Icons } from "./Icons";
+import { siteConfig } from "../../config/site";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -31,21 +32,18 @@ export default function MobileNav() {
           <MobileLink onOpenChange={setOpen} href="/blog" className="font-sm">
             Blog
           </MobileLink>
-          <MobileLink onOpenChange={setOpen} href="/blog" className="font-sm">
-            Recentes
-          </MobileLink>
-          <MobileLink onOpenChange={setOpen} href="/blog" className="font-sm">
+          <MobileLink onOpenChange={setOpen} href="/about" className="font-sm">
             Sobre
           </MobileLink>
         </div>
         <div className="flex gap-2 mt-7">
-          <MobileLink onOpenChange={setOpen} href="">
+          <MobileLink onOpenChange={setOpen} href={siteConfig.links.github}>
             <Icons.github className="px-0 h-6 w-6" />
           </MobileLink>
-          <MobileLink onOpenChange={setOpen} href="">
+          <MobileLink onOpenChange={setOpen} href={siteConfig.links.instagram}>
             <Icons.instagram className="px-0 h-6 w-6" />
           </MobileLink>
-          <MobileLink onOpenChange={setOpen} href="">
+          <MobileLink onOpenChange={setOpen} href={siteConfig.links.linkedin}>
             <Icons.linkedin className="px-0 h-6 w-6" />
           </MobileLink>
         </div>

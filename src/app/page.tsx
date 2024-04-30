@@ -56,7 +56,7 @@ export default function Home() {
           ))}
         </ul>
         <Link href="/blog">
-          <Button variant="ghost" className="flex gap-2 items-center">
+          <Button variant="ghost" className="flex gap-2 items-center mt-2">
             Ver mais postagens <ArrowRight size={17} />
           </Button>
         </Link>

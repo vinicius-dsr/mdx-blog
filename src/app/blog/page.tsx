@@ -24,7 +24,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <section className="flex flex-col mx-auto container">
-      <div className="container py-20 max-w-screen-lg h-[30vh] flex flex-col justify-center items-center gap-3 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600">
+      <div className="container py-20 max-w-screen-lg h-[30vh] flex flex-col text-center justify-center items-center gap-3 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600">
         <h1 className="font-black text-4xl lg:text-5xl drop-shadow-md text-white dark:text-primary">
           Bem vindo ao meu blog 📓
         </h1>
@@ -33,7 +33,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </p>
       </div>
 
-      <div className="container px-0 max-w-screen-lg lg:py-10 md:-mt-2 mt-5">
+      <div className="container px-0 max-w-screen-lg lg:py-10 md:mt-2 mt-5">
         {displayPosts?.length > 0 ? (
           <ul className="grid md:grid-cols-2 grid-cols-1 md:gap-5 gap-2 mb-5">
             {displayPosts.map((post) => {
