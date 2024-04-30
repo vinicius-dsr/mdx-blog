@@ -10,8 +10,8 @@ export default function Home() {
   const latestPosts = sortPosts(posts).slice(0, 6);
   return (
     <section className="flex flex-col mx-auto gap-4">
-      <div className="h-[85vh] mx-5 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600 flex flex-col items-center justify-center gap-4 text-center px-10">
-        <h1 className="md:text-5xl text-white dark:text-primary text-4xl mx-auto font-black drop-shadow-md">
+      <div className="md:h-[85vh] h-[70vh] mx-5 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600 flex flex-col items-center justify-center gap-4 text-center px-10">
+        <h1 className="md:text-5xl text-white dark:text-primary text-3xl mx-auto font-black drop-shadow-md">
           🤠 Bem vindo ao meu blog 📓
         </h1>
         <p className="text-white/70 md:text-lg text-base font-medium">

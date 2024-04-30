@@ -34,12 +34,12 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <article className="container mx-auto">
       <div className="max-w-screen-lg mx-auto rounded-xl flex flex-col gap-2 py-8 items-center text-center bg-gradient-to-r from-slate-900 to-slate-600 ">
-        <h1 className="font-bold drop-shadow-md text-3xl text-white dark:text-primary">
+        <h1 className="font-bold drop-shadow-md md:text-3xl text-xl text-white dark:text-primary">
           {post.title}
         </h1>
         {post.description ? (
           <>
-            <p className="text-lg text-white/70 font-medium drop-shadow-md">
+            <p className="md:text-lg text-base text-white/70 font-medium drop-shadow-md">
               {post.description}
             </p>
             <time
@@ -51,7 +51,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </>
         ) : null}
       </div>
-      <div className="container py-6 prose dark:prose-invert max-w-screen-lg mx-auto">
+      <div className="py-6 prose dark:prose-invert max-w-screen-lg mx-auto">
         <MDXContent code={post.body} />
       </div>
     </article>

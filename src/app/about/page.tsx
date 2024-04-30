@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <section className="container max-w-screen-lg mx-auto flex flex-col gap-4">
       <div className="rounded-xl flex flex-col items-center gap-2 py-10 bg-gradient-to-r from-slate-900 to-slate-600">
-        <h1 className="md:text-5xl text-white dark:text-primary text-4xl mx-auto font-black drop-shadow-md">
+        <h1 className="md:text-4xl text-white dark:text-primary text-3xl mx-auto font-black drop-shadow-md">
           Sobre 📓
         </h1>
         <p className="text-white/70 md:text-lg text-base font-medium">

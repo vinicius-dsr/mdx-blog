@@ -25,10 +25,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   return (
     <section className="flex flex-col mx-auto container">
       <div className="container py-20 max-w-screen-lg h-[30vh] flex flex-col text-center justify-center items-center gap-3 rounded-xl bg-gradient-to-r from-slate-900 to-slate-600">
-        <h1 className="font-black text-4xl lg:text-5xl drop-shadow-md text-white dark:text-primary">
+        <h1 className="font-black text-3xl md:text-4xl drop-shadow-md text-white dark:text-primary">
           Bem vindo ao meu blog 📓
         </h1>
-        <p className="text-xl text-white/70 font-medium drop-shadow-md">
+        <p className="md:text-xl text-base text-white/70 font-medium drop-shadow-md">
           Projetos e estudos de desenvolvimento web.
         </p>
       </div>
