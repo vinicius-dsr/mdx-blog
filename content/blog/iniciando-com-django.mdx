@@ -1,0 +1,64 @@
+---
+title: Iniciando com Django
+description: O Básico do Django
+date: 2024-05-02
+published: true
+---
+
+# Oque é
+
+O Django é uma Framework de Python feita para auxiliar no desenvolvimento de aplicações web. Se trata de uma Framework Full Stack, então por si só, ele tem a idade de prover todas as ferramentas necessárias pra o desenvolvimento.
+
+## Iniciando um projeto
+
+Primeiramente é recomendado a criação de um ambiente virtual Python
+
+```bash
+python -m venv .venv
+```
+
+Um vez com o ambiente virtual ativo, vamos instalar o Django através do pip
+
+```bash
+pip install django
+```
+
+Dentro da pasta que criamos para o projeto, vamos usar um comando do django para criar a estrutura básica
+
+```bash
+django-admin startproject setup .
+```
+
+- O "setup", seria a pasta com as configurações do projeto. Poderia ser qualquer nome, porém é uma boa prática definir a pasta de configurações com o nome do setup.
+- Colocamos o ponto no final, para informar o Django que não deve criar outra pasta e sim executar o comando onde está.
+
+Comando para cirar a pasta da aplicação
+
+```bash
+python manage.py startapp nome_do_projeto
+```
+
+## Arquivos estruturas de pastas
+
+### manage.py
+
+- Arquivo necessário para carregar todo o contexto de execução do Django
+
+### Pasta setup
+
+- #### settings.py
+  - Arquivo de execução principal, tudo de configurações do projeto, está presente neste arquivo.
+- #### urls.py
+  - Arquivo principal de rotas, onde definiremos as urls do projeto.
+- #### wsgi.py
+  - Arquivo padrão existente no Python, ele irá dizer como um projeto Python deve coversar com um servidos de aplicações Web.
+- #### asgi.py
+  - Segue a mesma lógica do `wsgi.py`, porém é feito especificamente para aplicações acicronas.
+
+## Pasta da aplicação
+
+- admin.py
+- apps.py
+- models.py
+- tests.py
+- views.py
