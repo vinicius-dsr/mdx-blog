@@ -1,0 +1,639 @@
+---
+title: Revisão JavaScript
+description: Post exclusivo para você revisar seus conhecimentos em JavaScript ou sair do zero
+date: 2024-06-21
+published: true
+---
+
+
+# Revisando JavaScript ou Saindo do zero
+
+## Vamos começar por Condições
+
+### Condições
+Podemos usar o clássico if, else if e o else:
+```javascript
+let trafficLight = "Verde"
+let message = ""
+
+if (trafficLight == "Verde"){
+  message = "Pode passar!"
+}else if (trafficLight == "Amarelo"){
+  message = "Atenção!"
+}else {
+  message = "Pare!"
+}
+
+console.log(message)
+```
+
+Mas também podemos usar o swith case:
+```javascript
+switch (trafficLight){
+  case "Verde":
+    message2 = "Pode passar"
+    break
+
+  case "Amarelo":
+    message2 = "Atenção"
+    break
+
+  case "Vermelho":
+    message2 = "Pare"
+    break
+
+  default:
+    message2 = "Valor inválido"
+}
+
+console.log(message2)
+```
+Depois de cada case, devemos colocar um break, isso vai indicar a função, que quando ela achar o resultado que lhe satisfaça, ela pode parar, caso contrário, o código, roda até o ultimo tópico, que seria o default.
+
+Para comparar se os valores são igual, como visto a cima, usamos dois sinais de igual,
+```javascript
+if (10 == 10){
+	console.log("Os valores são iguais")
+}
+```
+
+Porém, se eu trocar o valor para uma string.. o código retornará o mesmo valor
+```javascript
+if (10 == "10"){
+	console.log("Os valores são iguais")
+}
+```
+
+Para contornar esse situação, usamos 3x o valor de igual, assim além de comparar os valores, o javascript vai comprar o tipo também
+```javascript
+if (10 === 10 ){
+	console.log("Os valores são iguais")
+}
+```
+
+Veja os tipos de comparadores
+```javascript
+== //Igual
+=== //Exatamente igual(valor e tipo)
+!= //Diferente
+> //Maior
+< //Menor
+>= //Maior ou igual
+<= //Menor ou igual
+```
+
+
+
+### Operadores lógicos
+Tipos de operados -> AND(&&), OR(||), NOT(!)
+
+AND - Executará o bloco de códigos do if, quando ambas as condições retornarem true
+```javascript
+user = "viniciusreis"
+password = "1234"
+
+if (user === "viniciusreis" && password === "1234"){
+  console.log("Usuário autenticado")
+}else {
+  console.log("Dados incorretos")
+}
+```
+
+OR - Executará o bloco do if, se caso qualquer uma das condições retornar true
+```javascript
+age = 18
+sex = "M"
+
+if (age >= 18 || sex === "M"){
+  console.log("Entrada Liberada")
+}else{
+  console.log("Entrada Proibida")
+}
+```
+
+NOT = Executará o bloco do else, caso a condição retornará true
+```javascript
+let sex = "F"
+
+if (!sex === "F"){
+  console.log("Pode entrar")
+}else {
+  console.log("Entrada bloqueada")
+}
+```
+
+Usando o operador NOT, para inverter o valor de uma variável boleana, sendo ela um valor true, vamos inverter para false
+```javascript
+let isActive = true
+
+isActive = !isActive
+console.log(isActive)
+```
+
+
+#### Operador Ternário
+Veja o exemplo da operação if e else a baixo
+```javascript
+let age = 19
+let result = ""
+
+if (age >= 18){
+	result = "Ok"
+}else {
+	result = "Errado"
+}
+
+console.log(result)
+```
+
+Podemos verificar se o valor de age é true ou false de outras forma
+```javascript
+let age = 19
+
+let result = age >=18
+
+console.log(result)
+```
+
+O valor imprimido na variável result, será true, já que age é maior que 18, mas queremos chegar no mesmo resultado do exemplo feito com if e else.
+
+Para fazer isso usamos operadores ternários. Esse operador leva esse nome pois existem 3 operandos:
+1 - Condição
+2 - O retorno positivo(if)
+3 - O retorno negativo(else)
+Então a condição ficará dessa maneira
+```javascript
+let age = 19
+
+let result = age >= 18 ? "ok" : "errado"
+
+console.log(result)
+```
+
+
+### Estrutura de Repetição
+FOR - Para fazermos uma repetição com for, precisamos de 3 informações
+1 - contagem
+2 - condição
+3 - incremento
+```javascript
+for (var count = 0; count <= 10; count++){
+	console.log(count)
+}
+```
+No exemplo a cima, tenho uma variável que recebe o valor 0, então, enquanto o valor da variável for menor que 10, vou incrementar +1 a ela e vou imprimir o valor.
+
+Geralmente a variável de contagem é presentada pela letra i, por mais que não seja muito intuitivo, vamos ver com frequência em outros código, então é bom seguir o padrão
+```javascript
+for (i = 0; i <= 10; i++){
+	console.log(i)
+}
+```
+
+
+WHILE -  significa enquanto, então.. enquanto a condição não for satisfeita, devo executar determinada função
+```javascript
+let i = 0
+while(i <= 10) {
+	console.log(i)
+	i++ //sem isso o while vai rodar em loop
+}
+```
+
+Podemos usar as duas formas, porém é indicado usar o for, quando sabemos quando a função deverá acabar.
+
+
+## Escopo de função
+Usamos a declaração 'use strict' no início do código para indicar para o Javascript entrar no modo estrito, forçando assim a identificar e diferenciar variável declaradas em escopo local e global
+
+A diferença de escopo de função para escopo de bloco é que no escopo de função, não é possível vazar a variável local para fora do escopo, já em bloco, podemos acessar normalmente a variável dentro do escopo.
+
+
+## Tudo é Objeto
+#### Operações em strings
+No javascript, tudo são objetos, em uma simples variável, podemos executar métodos apartir dela.
+```javascript
+let text = "Olá, Mundo!"
+
+let value text.length
+
+console.log(value)
+```
+No exemplo a cima, vamos usar o lenght que significa tamanho/comprimento. Não se trata de um método e sim uma propriedade, por isso não precisamos colocar o () depois dele.
+
+Acessando a primeira letra de uma string
+```javascript
+var text = "Hello World"
+
+var value = text[0] //a contagem começa pelo 0
+console.log(value)
+```
+
+Método replace - Ele vai substituir uma caracter por outro. Ele recebe dois valores, o valor que vai ser substituído e o novo valor
+```javascript
+var text = "Hello World"
+
+var value = text.replace('0', '@')
+
+console.log(value)
+```
+
+toUpperCase - Esse método é autoexplicativo. Ele vai transformar todo texto e maiúsculo
+```javascript
+var text = "Hello World"
+
+var value = text.toUpperCase()
+
+console.log(value)
+```
+
+toLowercase = vai fazer o inverso.
+
+trim = Vai remover o espaçamento existentes antes e depois da string
+```javascript
+var text = " Hello World "
+var value = text.trim()
+
+console.log(value)
+```
+
+split - Ele divide a string em uma array de strings. Esse método recebe como valor, o caractere que servirá para identificar onde será feito a divisão
+```javascript
+var text = "Hello World"
+
+var value = text.split(' ')
+
+console.log(value)
+```
+nesse caso o caractere foi uma espaço em branco, o resultado será ``[ 'Hello', 'World' ]
+
+### Operações em números
+toString - Usamos para transformar variável do tipo number em strings
+```javascript
+var number = 10.2
+
+var newValue = number.toString()
+
+console.log(newValue)
+```
+
+Math - Se trata de um método do javascript. O Math, tem seu próprios métodos, como o trunc, se arredonda para baixo, então ao invés de ser um número quebrado, se tornará um núero inteiro
+```javascript
+var number = 10.3
+
+var newValue = Math.trunc(number)
+
+console.log(newValue)
+```
+
+ceil - Temos também o ceil, que vai arrodondar para cima
+```javascript
+var number = 10.3
+
+var newValue = Math.ceil(number)
+
+console.log(newValue)
+```
+
+Temos o round, que vai arredondar para um valor inteiro mais próximo
+```javascript
+var number = 10.3
+
+var newValue = Math.round(number)
+
+console.log(newValue)
+```
+
+
+### Operações em arrays
+Podemos usar o método length em uma array
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+console.log(array.length)
+```
+
+Essa informação é bastante poderosa, digamos que eu queria retirar os dados da array, posso utilizar esse método usando o for
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+for (var i = 0; i < array.length; i++){
+	console.log(array(i))
+}
+```
+A saída será 
+```
+Ferrugem
+Frajola
+Frozen
+```
+
+indexOf - Nos permite encontrar o valor dentro de uma array, ele leva como argumento o valor que queremos procurar. o Coódigo retornará o index do valor. Caso o retorno for "-1", isso significa que o valor não existe na array.
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+var newValue = array.indexOf('Frozen')
+
+console.log(newValue)
+```
+
+pop - Usamos para excluir valores da array, usado o método pop sem nenhum argumento, ele vai apagar o ultimo valor da array
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+array.pop()
+console.log(array)
+```
+
+Caso queiramos ver qual valor foi apagado, basta imprimir o pop
+```javascript
+console.log(array.pop())
+```
+
+push - Para colocarmos valores dentro da array, usamos o método push, usando o valor que queremos inserir como argumento
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+array.push('Billy')
+
+console.log(array)
+```
+
+splice - Serve para deletar um valor da array, de uma posição específica, passamos como argumento a posição(index) juntamente como a quantidade de vezes que queremos deletar o valor nessa posição.
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+array.splice(0, 1)
+
+console.log(array)
+```
+
+Um exemplo prático. Digamos que o dado que queremos deletar estar em um array externo, onde não sabemos sua posição, mas sabemos qual valor é.. Vamos usar indexOf juntamente com splice
+```javascript
+var array = ['Ferrugem', 'Frajola', 'Frozen']
+
+var index = array.indexOf('Frajola')
+
+array.splice(index, 1)
+
+console.log(array)
+```
+
+### Operações em objetos
+Adicionando mais uma propriedade em um objeto. nomeDoObjeto.NovaPropriede = Valor
+```javascript
+var person = {
+	name: "Vinícius",
+	height: 85,
+}
+
+person.age = 24
+
+console.log(person)
+```
+
+Podemos alterar valores também
+```javascript
+var person = {
+	name: "Vinícius"
+	height: 85,
+}
+
+person.name = "Sarah"
+
+console.log(person)
+```
+
+Caso queiramos congelar o objeto para não sobre futuras alterações, podemos fazer da seguinte forma
+```javascript
+var person = {
+	name: "Vinícius"
+	height: 85,
+}
+
+Object.freeze(person)
+```
+
+Digamos que queremos mesclar dois objetos e um, podemos fazer da seguinte forma
+```javascript
+var person = {
+	name: "Vinícius",
+	height: 85,
+}
+
+var any = {
+	age: 24
+}
+
+var newObject = Object.assign(person, any)
+
+console.log(person)
+```
+
+
+
+## DOM
+Document Object Model
+
+window - Objeto global que representa o DOM
+
+#### Seleção de Elementos
+Pegar elemento da DOM pelo id
+```javascript
+var idade = document.getElementById('idade')
+```
+
+Pega elemento pela classe
+```javascript
+var menu = document.getElementsByClassName("menu")
+```
+- Podemos pegar um único elemento dessas classe, usando o index dele. Nesse exemplo vou pegar o primeiro.
+```javascript
+var = menu1 = document.getElementsByClassName("menu")[0]
+```
+
+Navegar pela DOM e pegar qualquer elemento. 
+No exemplo a baixo, vamos navegar pelo body, entrar em uma div com id app e pegar o elemento h1.
+```javascript
+var h1 = document.querySelector('body div#app h1')
+```
+
+
+
+#### Manipulação de eventos
+Detectando um vento de click e executando uma função anônima
+```javascript
+var button = document.querySelector('#app button')
+
+button.addEventListener('click', function() {
+alert('Hello World!')
+})
+```
+
+
+#### Prevenção de padrões
+Usamos o método preventDefault no evento
+```javascript
+button.addEventListener('click', function(event) {
+event.preventDefault()
+alert('Hello World!')
+})
+```
+
+
+### Alterando Estilos
+Mudando o background do body para preto
+```javascript
+var element = document.querySelector('body')
+
+element.style.background = '#000'
+```
+
+
+### Alterando Conteúdo
+Quando fazemos a seleção de uma elemento da DOM, a mesma se transforma em objeto. Então temos acesso ás seguintes propriedades
+##### Todo o HTML do elemento 
+``.outerHTML
+- Podemos inserir conteúdo na dom, porém fazendo isso, estou substituindo o elemento por "Hello"
+```javascript
+var app = document.querySelector('div#app')
+
+app.outerHTML = "Hello"
+```
+
+##### HTML interno
+``.innerHTML
+- Mais uma vez com o innerHTML. Percebemos que quando fazemos isso, não iclementa com o valor do elemento e sim o substituimos
+```javascript
+var app = document.querySelector('div#app')
+
+app.innerHTML = "Hello"
+```
+- Podemos usar esse método, para carregar tags em html
+```javascript
+var app = document.querySelector('div#app')
+
+app.innerHTML = "<p>Hello World</p>"
+```
+##### Todo o texto interno, sem tags
+``.innerText
+- Porém, se formos usar o mesmo exemplo a cima com o innerText, vai carregar na página um texto mesmo, ignorando a fato de ter a tag de parágrafo
+```
+<p>Hello World</p>
+```
+
+
+### Operação em elementos
+Vamos criar um elemento. Basicamente, queremos criar um link dizendo "Visitar Google" e um href com o caminho
+```javascript
+//<a href="https://google.com">Vistar Google</a>
+
+var app = document.querySelector('div#app')
+
+var link = document.createElement('a')
+var textLink = document.createTextNode('Visitar Google')
+
+link.setAttribute('href', 'https://google.com')
+link.appendChild(textLink)
+
+app.appendChild(link)
+```
+
+Excluindo um elemento do html(removendo a tag p da div app)
+```javascript
+var app = document.querySelector('div#app')
+
+var text = document.querySelector('div#app p')
+
+app.removeChild(text)
+```
+
+
+### Intervalo e timeout
+Métodos vindo do objeto global window, sendo eles: 
+##### setInterval 
+Que vai executar uma ação após um período de tempo e vai permanecer executando após o mesmo período 
+```javascript
+//Podemos fazer dessa forma
+setInterval(function(){
+	console.log('Executou')
+}, 3000)//Executando após 3 segundos
+
+//Ou dessa forma
+function doAction(){
+	console.log('executou')
+}
+
+setInterval(doAction, 3000)
+```
+
+##### setTimeout
+E bem semelhante ao setInterval, porém ao invés de ficar executando várias vezes, ele vai executar a ação após um período determinado e depois não executará mais
+```javascript
+function doAction(){
+	console.log('executou')
+}
+
+setTimeout(doAction, 3000)
+```
+
+
+### Armazenamento Local
+Armazenando algo no local store
+```javascript
+localStorage.theme = 'dark'
+```
+
+Puxando essa informação
+```javascript
+console.log(localStorage.theme)
+//saída = "dark"
+```
+Caso fecharmos o navegador, vamos continuar com essa informação salva no local store, só vai ser apagada caso o usuário desejar limpar o dados de navegação.
+
+
+## JS Assíncrono
+
+### Assíncrono VS Síncrono
+- Síncrona (php por exemplo)
+	Comportamento de aguardar um bloco executar e ser finalizado, para só depois executar o segundo e assim por diante.
+
+- Assíncrona (Javascript)
+	Após a execução da aplicação, o compilador não aguarda o término do primeiro bloco. Isso é um ponto positivo, pois se caso e que se todas executaram ao mesmo tempo, vão terminar ao mesmo tempo.
+
+
+### Promises
+Um promisse ou promessa, no JavaScript, é uma função construtora, ela leva dois parâmetros, o resolve(para resolver a promessa) e o reject(para informar caso a promessa for rejeitada, ou seja, uma falha)
+```javascript
+var buyProduct = new Promise(function(resolve, reject){
+	setTimeout(fuction(){
+		var products = ['Camiseta','Calça','Sapato']
+		resolve(products)
+	},3000)
+})
+
+//then serve para chamar o valor de resolve quando ele for feito
+buyProduct.then(function(){
+	console.log(products)
+}).catch(function(error){
+	console.log(error)
+})
+```
+
+
+### Requisição AJAX
+Carregar informações de servidores externos(geralmente de API's), sem precisar recarregar a página
+```javascript
+//pegando dados de usuários github
+
+var xhr = new XMLHttpRequest()
+xhr.open('GET', 'https://api.github.com/users')
+xhr.send()
+
+xhr.onreadystatechange = function(){
+	if(xhr.readyState === 4){
+		var data = JSON.parce(xhr.reponseText)
+		console.log(data[0].login)
+	}
+}
+```
