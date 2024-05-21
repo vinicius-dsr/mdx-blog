@@ -1,0 +1,96 @@
+---
+title: Web Apps com Streamlit
+description: Iniciando com Streamlit e desenvolvendo uma App
+date: 2024-05-21
+published: true
+---
+
+# Conhecento o Streamlit e seus conceitos
+## Streamlit é uma ferramente simples e poderosa, onde podemos desenvolver apps em python para rodar diretamente no navegador.
+
+#### Criar Ambiente Virtual em Python
+`python3 -m venv .venv
+- -m -> Módulo
+- venv -> Nome do módulo
+- .venv -> Nome do ambiente virtual
+
+### Streamlit Anotações
+#### Os Widgets
+##### O streamlit conta com diversos tipos de widgets. Eles são dispostos em 7 categorias, elas são:
+- Texto
+- Exibição de Dados
+- Gráficos
+- Inputs
+- Mídia
+- Status/Progresso
+- Layouts
+#### Usando o Streamlit
+ Importando no início do código
+ ```python
+ import streamlit as st
+ ```
+
+Criando um título(similar ao H1 do html kkk)
+```python
+st.title('Olá, Mundo!')
+```
+
+Carregando Imagens
+```python
+st.image('caminho_da_imagem_ou_variavel)
+```
+
+
+#### Pequeno projeto usando o streamlit
+Criaremos um visualizados de arquivos
+Desta forma poderemos conhecer as **categorias** de widgets.
+- Textos
+	- markdown
+	- code
+- Mídia
+	- audio
+	- image
+- Gráfico
+	- Linha
+- Visualização
+	- datafram
+	- json
+- Input
+	- fileuploader
+- Status
+	- error
+
+Código do projeto:
+```python
+import streamlit as st
+from pandas import read_csv
+
+st.title('Exibir Arquivos')
+st.subheader('Suba um arquivo e vejamos oque acontece')
+
+arquivo = st.file_uploader(
+	'Suba seu arquivo aqui',
+	type=['jpg', 'png', 'py', 'csv', 'mp3', 'mp4']
+)
+
+if arquivo:
+	print(arquivo.type)
+	match arquivo.type.split('/'):
+		case 'image', _:
+			st.image(arquivo)
+		case 'audio', _:
+			st.audio(arquivo)
+		case 'text', 'csv':
+			df = read_csv(arquivo)
+			st.line_chart(df) #gráfico de linhas
+		case 'text', 'x-python':
+			st.code(arquivo.read().decode())
+else:
+	st.error('Nenhum arquivo foi carregado!')
+```
+##### Conceitos
+A execução do streamlit é um **loop de eventos** e toda vez que uma ação é concretizada ele pausa o loop para esperar alguma nova ação.
+- Widgets são adicionados a baixo
+- Códigos em Python constrolam o fluxo
+- **Código em Python pode ser chamado dentro do app**
+
