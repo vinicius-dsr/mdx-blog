@@ -1,0 +1,126 @@
+---
+title: Instalando e configurando o Velite
+description: Breve tutorial mostrando a instalação e configuração do Velite
+date: 2024-05-21
+published: true
+---
+
+# Instalando e configurando o Velite
+## Veja como é fácil o processo de instalação do Velite para uso em um projeto de Blog
+
+instalando o Velite como dependência de desenvolvimento
+```
+npx install velite -D
+```
+
+Criar um arquivo na raiz "/" com o nome ``velite.config.ts``
+
+Arquivo velite.config.ts
+```ts
+import { defineConfig, defineCollection, s} from "velite"
+
+const computedFields = <T extends {slug: string}>(data: T) => ({
+	...data,
+	slugAsParams: data.slug.split("/").slice(1).join("/"),
+})
+
+const post = defineCollection ({
+	name: "Post",
+	pattern: "blog/**/*.mdx",
+	schema: s.object({
+		slug: s.path(),
+		title: s.string().max(99),
+		description: s.string().max(999).optional(),
+		date: s.isodate(),
+		published: s.boolean().default(true),
+		body: s.mdx()
+	}).transform(computedFields),
+})
+
+export default defineConfig({
+	root: "content",
+	output: {
+		data: ".velite",
+		assets: "public/static",
+		base: "/static/",
+		name: "[name]-[hash:6].[ext]",
+		clean: true,
+	},
+	collections: {posts},
+	mdx: {
+		rehypePlugins: [],
+		remarkPlugins: [],
+	}
+})
+```
+
+Fazer integração do velite com nextjs, pra isso vamos adicionar algumas coisas no arquivo no arquivo  ``next.config.mjs``, podemos apenas copiar o código na documentação do Velite, na parte "ESM: 
+https://velite.js.org/guide/with-nextjs
+
+Mas vou deixar o código aqui tbm
+next.config.mjs:
+```js
+import { build } from 'velite'
+
+/** @type {import('next').NextConfig} */
+export default {
+  // othor next config here...
+  webpack: config => {
+    config.plugins.push(new VeliteWebpackPlugin())
+    return config
+  }
+}
+
+class VeliteWebpackPlugin {
+  static started = false
+  constructor(/** @type {import('velite').Options} */ options = {}) {
+    this.options = options
+  }
+  apply(/** @type {import('webpack').Compiler} */ compiler) {
+    // executed three times in nextjs !!!
+    // twice for the server (nodejs / edge runtime) and once for the client
+    compiler.hooks.beforeCompile.tapPromise('VeliteWebpackPlugin', async () => {
+      if (VeliteWebpackPlugin.started) return
+      VeliteWebpackPlugin.started = true
+      const dev = compiler.options.mode === 'development'
+      this.options.watch = this.options.watch ?? dev
+      this.options.clean = this.options.clean ?? !dev
+      await build(this.options) // start velite
+    })
+  }
+}
+```
+
+É importante adicionar os arquivos do velite no .gitignore
+```
+# velite file
+.velite
+```
+
+Dentro da raiz, vamos criar uma pasta chamada "content" e dentro dela, criaremos uma pasta chamada "blog", dentro da pasta blog será armazenado os nosso artigos em .mdx:
+``/content/blog/hello-world.mdx``
+
+Exemplo da base do arquivo mdx para ser usado no projeto:
+```mdx
+---
+title: Hello World
+description: Primeiro post do blog
+date: 2024-04-25
+published: true
+---
+
+# Hello World
+
+Seja bem vindo ao meu blog
+```
+
+Vamos agora executar nosso projeto para o velite criar alguns arquivos de configuração
+``npm run dev``
+
+Dentro do arquivo tsconfig.json, vamos adicionar a seguinte linha dentro do objeto "paths"
+```json
+"paths": {
+	"@/*": ["./*"],
+	"#site/content": ["./.velite"] //Essa linha q vamos adicionar
+}
+```
