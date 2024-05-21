@@ -1,0 +1,65 @@
+---
+title: Setup Tailwind
+description: Adicionando Tailwind CSS e configurando manualmente
+date: 2024-04-21
+published: true
+---
+
+# Adicionando e configurando manualmente o Tailwind CSS
+
+Acessar o site da documentação:
+https://tailwindcss.com/docs/installation
+
+### Começando com npm
+Vamos usar o seguinte comando dentro da pasta do projeto, para informar que estamos usando npm.
+```bash
+npm init -y
+```
+
+
+### Iniciando o Taildwind
+
+- Vamos instalar via npm, como dependência de desenvolvimento:
+```bash
+npm install -D tailwindcss
+```
+
+- Criando o arquivo de configuração  ``tailwind.config.js``:
+```bash
+npx tailwindcss init
+```
+
+- O arquivo ``taildwind.config.js`` será gerado sem content, dessa forma:
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+- Dentro de content, precisamos informar onde estarão os arquivos que vão usar Tailwind CSS. Então o content terá o seguinte conteúdo: ``["./**/*.{html,js}"]``, isso quer dizer que, qualquer arquivo dentro da minha pasta raiz ou dentro de qualquer outra pasta existente na pasta raiz e que usam a extensão .html e .js, vão usar os estilos Tailwind.
+
+- Dentro do nosso arquivo de estilo css, temos que importar o base, os components e os utilities(as classes)  do Tailwind.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+- Agora precisamos rodar o comando do CLI, o qual vai pegar tudo que está no arquivo de entrada do css(onde importamos a diretrizes a cima), vai criar um arquivo de saída e ficar monitorando. Isso vai garantir que usemos tudo que tem disponível no Tailwind.
+- Como esse comando é importante, vamos utilizar ele como um script dentro do ``package.json`` como "dev":
+```json
+"scripts": {
+	"dev": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+}
+```
+- Agora podemos executar esse script através do comando: ```npm run dev
+
+- Agora dentro do nosso index.html, vamos linkar o arquivo output.css via tag link:
+```html
+<link href="./styles/output.css" rel="stylesheet">
+```
