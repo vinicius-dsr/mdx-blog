@@ -1,0 +1,61 @@
+---
+title: Envios de Email com Python
+description: Ferramente de envio de emails em massa com Python e Streamlit
+date: 2024-04-21
+published: true
+---
+ 
+# Ferramente de envios de Email com Python e Streamlit
+
+Código:
+```python
+import streamlit as st
+import smtplib
+import pandas as pd
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+  
+st.title('App para envio de emails')
+email = st.text_input('Email', placeholder='Digite aqui seu email..')
+senha = st.text_input('Senha', placeholder='Digite aqui sua senha..', type='password')
+assunto = st.text_input('Assunto', placeholder='Digite aqui o assunto..')
+messagem = st.text_area('Messagem', placeholder='Digite aqui sua mensagem..')
+
+st.subheader('Carregar lista de email')
+
+arquivo = st.file_uploader(
+  'Suba o arquivo excel aqui',
+  type=['xlsx', 'csv']
+)
+
+
+if arquivo:
+  clientes = pd.read_excel(arquivo)
+  #st.dataframe(clientes)
+else:
+  st.error('Nenhum arquivo foi carregado')
+
+
+def sendmail():
+  for index, cliente in clientes.iterrows():
+    msg = MIMEMultipart()
+    msg['Subject'] = assunto
+    msg['From'] = email
+    msg['To'] = cliente['email']
+    msgs = f'Olá, {cliente['nome']}\n \n{messagem}'
+    msg.attach(MIMEText(msgs, 'plain'))
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(email, senha)
+    server.sendmail(msg['From'], msg['To'], msg.as_string())
+    server.quit()
+
+  
+if st.button('Enviar Emails'):
+  try:
+    sendmail()
+    st.success('Emails enviados com sucesso!')
+  except Exception as e:
+    st.error(f'Erro ao enviar os email: {e}')
+```
