@@ -7,7 +7,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/vinicius_dev",
     github: "https://github.com/vinicius-dsr",
     linkedin: "https://www.linkedin.com/in/viniciusreis-pgm/",
-    personalSite: "https://vinicius-dsr.github.io/portfolio",
+    personalSite: "https://vinidev.tech",
     project: "https://github.com/vinicius-dsr/mdx-blog",
   },
 };
